@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: monospace;
+    font-size: 20px;
+    overflow: hidden;
+    color: #cccccc;
+}
+
+html {
+    background-color: #0C0C0C;
+}
+
+#content {
+    padding: 5vw;
+    width: 90vw;
+    color: white;
+    background-color: #0C0C0C;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+@media screen and (max-width: 600px) {
+    #content {
+        width: 98vw;
+        padding: 2vw;
+    }
+
+    * {
+        font-size: 15px;
+    }
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    49% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    99% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+#cursor {
+    height: 20%;
+    background-color: #F3F3F3;
+    animation: blink 1s infinite;
+}
