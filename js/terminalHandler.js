@@ -31,7 +31,7 @@ function handleCommand(command) {
         if (typeof commands[cmd].response === "function") addText(commands[cmd].response());
         else addText(commands[cmd].response);
     } else {
-        addText([`<span class='red'>Command not found: ${cmd}</span>`]);
+        addText([color.lightred(`Command not found: ${cmd}`)]);
     }
 }
 
