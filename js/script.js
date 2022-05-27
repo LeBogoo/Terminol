@@ -1,4 +1,5 @@
 const content = document.querySelector('#content');
+const mobileInput = document.querySelector('#mobileInput');
 
 function submit(text) {
     term.log.push(term.prefix + text);
@@ -8,7 +9,20 @@ function submit(text) {
     render();
 }
 
+mobileInput.addEventListener('input', (e) => {
+    term.line = e.data.toString();
+    term.offset = term.line.length + 1;
+    render();
+})
+
+document.addEventListener('touchstart', (e) => {
+    setTimeout(() => {
+        mobileInput.focus();
+    }, 100);
+})
+
 document.addEventListener('keydown', (e) => {
+    if (e.key == "Unidentified") return;
     var preCursor = "";
     var postCursor = "";
 
@@ -37,6 +51,7 @@ document.addEventListener('keydown', (e) => {
         case "Enter":
             submit(term.line);
             term.line = "";
+            mobileInput.value = "";
             break;
         case "ArrowUp":
             if (term.historyIndex > 0) {

@@ -20,6 +20,12 @@ html {
     word-break: break-all;
 }
 
+#mobileInput {
+    position: absolute;
+    top: -100vh;
+
+}
+
 @media screen and (max-width: 600px) {
     #content {
         width: 98vw;
