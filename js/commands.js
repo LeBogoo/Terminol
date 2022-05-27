@@ -17,7 +17,11 @@ const commands = {
 
     about: {
         description: "Show information about this terminal",
-        response: "This is a simple terminal emulator written in javascript."
+        response: async () => {
+            const res = await fetch('README.md');
+            const text = await res.text();
+            return text;
+        }
     },
 
     date: {
