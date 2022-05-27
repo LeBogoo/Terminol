@@ -10,7 +10,7 @@ function submit(text) {
 }
 
 mobileInput.addEventListener('input', (e) => {
-    term.line = e.data.toString();
+    term.line = mobileInput.value;
     term.offset = term.line.length + 1;
     render();
 })
