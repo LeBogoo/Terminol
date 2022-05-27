@@ -1,6 +1,6 @@
 # Terminol
 
-This is a simple terminal emulator written in JavaScript.
+This is a simple terminal like website written in JavaScript.
 
 You can use it for whatever you want!
 
