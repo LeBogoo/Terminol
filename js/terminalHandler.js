@@ -28,7 +28,15 @@ function handleCommand(command) {
     localStorage.setItem("history", JSON.stringify(term.history));
 
     if (commands[cmd]) {
-        if (typeof commands[cmd].response === "function") addText(commands[cmd].response());
+        if (typeof commands[cmd].response === "function") {
+            const response = commands[cmd].response();
+            if (response instanceof Promise) {
+                response.then(res => addText(res));
+            } else {
+                addText(response);
+
+            }
+        }
         else addText(commands[cmd].response);
     } else {
         addText([color.lightred(`Command not found: ${cmd}`)]);
