@@ -77,6 +77,9 @@ addText([
     color.lime("     ¯-\\ ᴗ / -¯"),
     color.lime("        ᴗᴗᴗ"),
     "",
+    color.lightyellow("Type " + color.lightred("\"help\"") + " to get a list of all available commands."),
+    "",
+
 ])
 
 render();
