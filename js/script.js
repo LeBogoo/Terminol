@@ -89,7 +89,7 @@ document.addEventListener('keydown', (e) => {
 addText([
     color.lightyellow("Terminol - by ") + color.lime("LeBogo"),
     color.lime("       /^ ^\\"),
-    color.lime("     ¯-\\ ᴗ / -¯"),
+    color.lime("     ¯-\\ ᴗ /-¯"),
     color.lime("        ᴗᴗᴗ"),
     "",
     color.lightyellow("Type " + color.lightred("\"help\"") + " to get a list of all available commands."),
