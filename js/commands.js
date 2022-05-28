@@ -16,7 +16,7 @@ const commands = {
     },
 
     about: {
-        description: "Show information about this terminal",
+        description: "Show information about this terminol",
         response: async () => {
             const res = await fetch('README.md');
             const text = await res.text();
@@ -33,7 +33,7 @@ const commands = {
     },
 
     clear: {
-        description: "Clear the terminal",
+        description: "Clear the terminol",
         response: () => {
             term.log = [];
             render();
@@ -57,7 +57,7 @@ const commands = {
     },
 
     clearHistory: {
-        description: "Clear the terminal history",
+        description: "Clear the terminol history",
         response: () => {
             term.history = [];
             term.historyIndex = 0;
@@ -70,6 +70,13 @@ const commands = {
         response: () => {
             window.open("https://github.com/LeBogoo/Terminol");
             return "Opening github page... (<a href='https://github.com/LeBogoo/Terminol'>GitHub</a>)";
+        }
+    },
+
+    exit: {
+        description: "Exit the terminol",
+        response: () => {
+            window.close();
         }
     }
 
