@@ -29,7 +29,7 @@ function handleCommand(command) {
 
     if (commands[cmd]) {
         if (typeof commands[cmd].response === "function") {
-            const response = commands[cmd].response();
+            const response = commands[cmd].response(args);
             if (response instanceof Promise) {
                 response.then(res => addText(res));
             } else {
