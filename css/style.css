@@ -8,14 +8,14 @@
 }
 
 html {
-    background-color: #0C0C0C;
+    background-color: #0c0c0c;
 }
 
 #content {
     padding: 5vw;
     width: 90vw;
     color: white;
-    background-color: #0C0C0C;
+    background-color: #0c0c0c;
     white-space: pre-wrap;
     word-break: break-all;
 }
@@ -23,7 +23,6 @@ html {
 #mobileInput {
     position: absolute;
     top: -100vh;
-
 }
 
 @media screen and (max-width: 600px) {
@@ -61,6 +60,6 @@ html {
 
 #cursor {
     height: 20%;
-    background-color: #F3F3F3;
+    background-color: #f3f3f3;
     animation: blink 1s infinite;
 }

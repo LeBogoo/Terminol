@@ -14,8 +14,7 @@ const color = {
     lightpurple: (text) => `<span style='color: #B40073;'>${text}</span>`,
     lightyellow: (text) => `<span style='color: #F9F18F;'>${text}</span>`,
     white: (text) => `<span style='color: #CCCCCC;'>${text}</span>`,
-
-}
+};
 
 function handleCommand(command) {
     if (command.trim() == "") return;
@@ -31,13 +30,11 @@ function handleCommand(command) {
         if (typeof commands[cmd].response === "function") {
             const response = commands[cmd].response(args);
             if (response instanceof Promise) {
-                response.then(res => addText(res));
+                response.then((res) => addText(res));
             } else {
                 addText(response);
-
             }
-        }
-        else addText(commands[cmd].response);
+        } else addText(commands[cmd].response);
     } else {
         addText([color.lightred(`Command not found: ${cmd}`)]);
     }
@@ -50,13 +47,18 @@ const term = {
     history: [],
     historyIndex: 0,
     color: color.lightgreen,
-}
+};
 
 term.prefix = `${term.color("guest@lebogo.me")}:${color.lightblue("~")}$ `;
 
 function render() {
     var line = term.prefix + "<span id='cursor'>_</span>";
-    if (term.line) line = term.prefix + term.line.substr(0, term.offset) + "<span id='cursor'>_</span>" + term.line.substr(term.offset);
+    if (term.line)
+        line =
+            term.prefix +
+            term.line.substr(0, term.offset) +
+            "<span id='cursor'>_</span>" +
+            term.line.substr(term.offset);
     content.innerHTML = [...term.log, line].join("\n");
     window.scrollTo(0, document.body.scrollHeight);
 }

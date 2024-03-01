@@ -1,5 +1,5 @@
-const content = document.querySelector('#content');
-const mobileInput = document.querySelector('#mobileInput');
+const content = document.querySelector("#content");
+const mobileInput = document.querySelector("#mobileInput");
 
 function submit(text) {
     term.log.push(term.prefix + text);
@@ -9,19 +9,19 @@ function submit(text) {
     render();
 }
 
-mobileInput.addEventListener('input', (e) => {
+mobileInput.addEventListener("input", (e) => {
     term.line = mobileInput.value;
     term.offset = term.line.length + 1;
     render();
-})
+});
 
-document.addEventListener('touchstart', (e) => {
+document.addEventListener("touchstart", (e) => {
     setTimeout(() => {
         mobileInput.focus();
     }, 100);
-})
+});
 
-document.addEventListener('keydown', (e) => {
+document.addEventListener("keydown", (e) => {
     if (e.key == "Unidentified") return;
     var preCursor = "";
     var postCursor = "";
@@ -92,9 +92,12 @@ addText([
     color.lime("     ¯-\\ ᴗ /-¯"),
     color.lime("        ᴗᴗᴗ"),
     "",
-    color.lightyellow("Type " + color.lightred("\"help\"") + " to get a list of all available commands."),
+    color.lightyellow(
+        "Type " +
+            color.lightred('"help"') +
+            " to get a list of all available commands."
+    ),
     "",
-
-])
+]);
 
 render();
