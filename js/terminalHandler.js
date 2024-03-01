@@ -63,11 +63,15 @@ function render() {
     window.scrollTo(0, document.body.scrollHeight);
 }
 
-function addText(lines) {
+async function addText(lines) {
     if (!lines) return;
     if (typeof lines === "string") lines = [lines];
-    for (let line of lines) term.log.push(line);
-    render();
+    for (let line of lines) {
+        term.log.push(line);
+        await new Promise((r) => setTimeout(r, 20));
+
+        render();
+    }
 }
 term.history = JSON.parse(localStorage.getItem("history")) || [];
 term.historyIndex = term.history.length;

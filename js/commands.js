@@ -22,7 +22,7 @@ const commands = {
         response: async () => {
             const res = await fetch("README.md");
             const text = await res.text();
-            return text;
+            return text.split("\n");
         },
     },
 
