@@ -52,7 +52,7 @@ const term = {
     color: color.lightgreen,
 }
 
-term.prefix = `${term.color("guest@lebogo.tk")}:${color.lightblue("~")}$ `;
+term.prefix = `${term.color("guest@lebogo.me")}:${color.lightblue("~")}$ `;
 
 function render() {
     var line = term.prefix + "<span id='cursor'>_</span>";
