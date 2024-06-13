@@ -1,4 +1,9 @@
-const color = {
+import { commands } from "./commands";
+import { content } from "./main";
+
+export const color: {
+    [key: string]: (text: string) => string;
+} = {
     blue: (text) => `<span style='color: #0037DA;'>${text}</span>`,
     green: (text) => `<span style='color: #13A10E;'>${text}</span>`,
     aqua: (text) => `<span style='color: #3A96DD;'>${text}</span>`,
@@ -16,13 +21,14 @@ const color = {
     white: (text) => `<span style='color: #CCCCCC;'>${text}</span>`,
 };
 
-function handleCommand(command) {
+export function handleCommand(command: string) {
     if (command.trim() == "") return;
     const args = command.split(" ");
-    const cmd = args.shift();
+    if (args.length === 0) return;
+    const cmd = args.shift()!;
 
-    term.history = JSON.parse(localStorage.getItem("history")) || [];
-    term.history.push(command);
+    (term.history = JSON.parse(localStorage.getItem("history") || "[]")),
+        term.history.push(command);
     term.historyIndex = term.history.length;
     localStorage.setItem("history", JSON.stringify(term.history));
 
@@ -32,38 +38,47 @@ function handleCommand(command) {
             if (response instanceof Promise) {
                 response.then((res) => addText(res));
             } else {
-                addText(response);
+                if (response) addText(response);
             }
-        } else addText(commands[cmd].response);
+        } else addText(commands[cmd].response as unknown as string[]);
     } else {
         addText([color.lightred(`Command not found: ${cmd}`)]);
     }
 }
 
-const term = {
+export const term: {
+    line: string;
+    offset: number;
+    log: string[];
+    history: string[];
+    historyIndex: number;
+    color: (text: string) => string;
+    prefix: string;
+} = {
     line: "",
     offset: 0,
     log: [],
     history: [],
     historyIndex: 0,
     color: color.lightgreen,
+    prefix: "",
 };
 
 term.prefix = `${term.color("guest@lebogo.me")}:${color.lightblue("~")}$ `;
 
-function render() {
+export function render() {
     var line = term.prefix + "<span id='cursor'>_</span>";
     if (term.line)
         line =
             term.prefix +
-            term.line.substr(0, term.offset) +
+            term.line.substring(0, term.offset) +
             "<span id='cursor'>_</span>" +
-            term.line.substr(term.offset);
+            term.line.substring(term.offset);
     content.innerHTML = [...term.log, line].join("\n");
     window.scrollTo(0, document.body.scrollHeight);
 }
 
-async function addText(lines) {
+export async function addText(lines: string | string[] | undefined) {
     if (!lines) return;
     if (typeof lines === "string") lines = [lines];
     for (let line of lines) {
@@ -73,5 +88,5 @@ async function addText(lines) {
         render();
     }
 }
-term.history = JSON.parse(localStorage.getItem("history")) || [];
+term.history = JSON.parse(localStorage.getItem("history") || "[]");
 term.historyIndex = term.history.length;

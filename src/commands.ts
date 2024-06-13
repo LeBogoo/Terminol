@@ -1,4 +1,15 @@
-const commands = {
+import { color, render, term } from "./terminalHandler";
+
+export interface Command {
+    description: string;
+    response: (
+        args: string[]
+    ) => (Promise<string[]> | string[] | string) | string[] | void;
+}
+
+export const commands: {
+    [key: string]: Command;
+} = {
     help: {
         description: "Show this help",
         response: () => {

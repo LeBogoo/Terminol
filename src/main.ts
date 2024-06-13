@@ -1,7 +1,12 @@
-const content = document.querySelector("#content");
-const mobileInput = document.querySelector("#mobileInput");
+import "./css/style.css";
+import { addText, color, handleCommand, render, term } from "./terminalHandler";
 
-function submit(text) {
+export const content = document.querySelector("#content")!;
+export const mobileInput = document.querySelector(
+    "#mobileInput"
+) as HTMLInputElement;
+
+function submit(text: string) {
     term.log.push(term.prefix + text);
     term.line = "";
     term.offset = 0;
@@ -9,13 +14,13 @@ function submit(text) {
     render();
 }
 
-mobileInput.addEventListener("input", (e) => {
+mobileInput.addEventListener("input", () => {
     term.line = mobileInput.value;
     term.offset = term.line.length + 1;
     render();
 });
 
-document.addEventListener("touchstart", (e) => {
+document.addEventListener("touchstart", () => {
     setTimeout(() => {
         mobileInput.focus();
     }, 100);

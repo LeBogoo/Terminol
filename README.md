@@ -1,12 +1,21 @@
 # Terminol
 
-This is a simple terminal like website written in JavaScript.
+This is a terminal like website written in TypeScript.
 
 You can use it for whatever you want!
 
-Simply open the HTML file in a browser and type in your commands.
+## Development
 
-Add custom commands in the `js/commands.js` file.
+To start developing, you need to have Node.js installed.
+
+1. Clone the repository.
+2. Run `npm install` to install the dependencies.
+3. Run `npm run dev` to start the development server.
+4. Open `http://localhost:8080` in your browser.
+
+## Building
+
+To build the project, run `npm run build`. The output will be in the `dist` folder.
 
 ## Features
 
